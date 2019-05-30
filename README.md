@@ -1,6 +1,6 @@
 # GPT2sQA
 
-This repo includes a fine-tuned model for GPT-2 117M for Question Answering (QA). It also runs the model on Stanford Question Answering Dataset 2.0 (SQuAD). It uses Huggingface Inc.'s PyTorch implementation of GPT-2 and adapts from their fine-tuning of BERT for QA. 
+This repo includes an experiment of fine-tuning GPT-2 117M for Question Answering (QA). It also runs the model on Stanford Question Answering Dataset 2.0 (SQuAD). It uses Huggingface Inc.'s PyTorch implementation of GPT-2 and adapts from their fine-tuning of BERT for QA. 
 
 SQuAD data can be downloaded from: https://github.com/rajpurkar/SQuAD-explorer/tree/master/dataset
 
