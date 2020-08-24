@@ -8,7 +8,7 @@ SQuAD data can be downloaded from: https://github.com/rajpurkar/SQuAD-explorer/t
 To train and validate the model: 
 
 ```
-python gpt2_squad.py --output_dir=output/ --train_file=data/train-v2.0.json --do_train --train_batch_size=32 --predict_file=data/dev-v2.0.json --do_predict
+python gpt2_squad.py --output_dir=output/ --train_file=./gpt2sqa/datasets/train-v2.0.json --do_train --train_batch_size=8 --predict_file=./gpt2sqa/datasets/dev-v2.0.json --do_predict
 
 ```
 

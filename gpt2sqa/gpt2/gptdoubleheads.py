@@ -1,4 +1,3 @@
-
 import torch
 import torch.nn as nn
 from torch.nn import CrossEntropyLoss
@@ -69,8 +68,19 @@ class GPT2DoubleHeadsModel(GPT2PreTrainedModel):
         """
         self.lm_head.set_embeddings_weights(self.transformer.wte.weight)
 
-    def forward(self, input_ids, mc_token_ids, lm_labels=None, mc_labels=None, token_type_ids=None, position_ids=None, past=None):
-        hidden_states, presents = self.transformer(input_ids, position_ids, token_type_ids, past)
+    def forward(
+        self,
+        input_ids,
+        mc_token_ids,
+        lm_labels=None,
+        mc_labels=None,
+        token_type_ids=None,
+        position_ids=None,
+        past=None,
+    ):
+        hidden_states, presents = self.transformer(
+            input_ids, position_ids, token_type_ids, past
+        )
         lm_logits = self.lm_head(hidden_states)
         mc_logits = self.multiple_choice_head(hidden_states, mc_token_ids)
         losses = []
@@ -78,11 +88,16 @@ class GPT2DoubleHeadsModel(GPT2PreTrainedModel):
             shift_logits = lm_logits[:, :-1].contiguous()
             shift_labels = lm_labels[:, 1:].contiguous()
             loss_fct = CrossEntropyLoss(ignore_index=-1)
-            losses.append(loss_fct(shift_logits.view(-1,
-                                                     shift_logits.size(-1)), shift_labels.view(-1)))
+            losses.append(
+                loss_fct(
+                    shift_logits.view(-1, shift_logits.size(-1)), shift_labels.view(-1)
+                )
+            )
         if mc_labels is not None:
             loss_fct = CrossEntropyLoss()
-            losses.append(loss_fct(mc_logits.view(-1, mc_logits.size(-1)), mc_labels.view(-1)))
+            losses.append(
+                loss_fct(mc_logits.view(-1, mc_logits.size(-1)), mc_labels.view(-1))
+            )
         if losses:
             return losses
         return lm_logits, mc_logits, presents

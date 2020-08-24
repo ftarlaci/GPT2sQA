@@ -7,4 +7,9 @@ from gpt2sqa.gpt2.gptdoubleheads import GPT2DoubleHeadsModel
 from gpt2sqa.gpt2.gpt2lmhead import GPT2LMHead
 
 
-from .file_utils import PYTORCH_PRETRAINED_GPT2_CACHE, cached_path, WEIGHTS_NAME, CONFIG_NAME
+from .file_utils import (
+    PYTORCH_PRETRAINED_GPT2_CACHE,
+    cached_path,
+    WEIGHTS_NAME,
+    CONFIG_NAME,
+)

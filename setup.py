@@ -42,30 +42,24 @@ setup(
     author="Thomas Wolf, Victor Sanh, Tim Rault, Google AI Language Team Authors, Open AI team Authors",
     author_email="thomas@huggingface.co",
     description="PyTorch version of Google AI BERT model with script to load Google pre-trained models",
-    long_description=open("README.md", "r", encoding='utf-8').read(),
+    long_description=open("README.md", "r", encoding="utf-8").read(),
     long_description_content_type="text/markdown",
-    keywords='BERT NLP deep learning google',
-    license='Apache',
+    keywords="BERT NLP deep learning google",
+    license="Apache",
     url="https://github.com/huggingface/pytorch-pretrained-BERT",
-    packages=find_packages(exclude=["*.tests", "*.tests.*",
-                                    "tests.*", "tests"]),
-    install_requires=['torch>=0.4.1',
-                      'numpy',
-                      'boto3',
-                      'requests',
-                      'tqdm',
-                      'regex'],
+    packages=find_packages(exclude=["*.tests", "*.tests.*", "tests.*", "tests"]),
+    install_requires=["torch>=0.4.1", "numpy", "boto3", "requests", "tqdm", "regex"],
     entry_points={
-      'console_scripts': [
-        "pytorch_pretrained_bert=pytorch_pretrained_bert.__main__:main",
-      ]
+        "console_scripts": [
+            "pytorch_pretrained_bert=pytorch_pretrained_bert.__main__:main",
+        ]
     },
     # python_requires='>=3.5.0',
-    tests_require=['pytest'],
+    tests_require=["pytest"],
     classifiers=[
-          'Intended Audience :: Science/Research',
-          'License :: OSI Approved :: Apache Software License',
-          'Programming Language :: Python :: 3',
-          'Topic :: Scientific/Engineering :: Artificial Intelligence',
+        "Intended Audience :: Science/Research",
+        "License :: OSI Approved :: Apache Software License",
+        "Programming Language :: Python :: 3",
+        "Topic :: Scientific/Engineering :: Artificial Intelligence",
     ],
 )
