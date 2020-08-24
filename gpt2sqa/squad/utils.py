@@ -3,6 +3,8 @@ import json
 import collections
 import math
 
+from tqdm import tqdm
+
 from gpt2sqa.squad.squad_example import SquadExample, InputFeatures
 from gpt2sqa.tokenization import (whitespace_tokenize, BasicTokenizer)
 
@@ -95,8 +97,10 @@ def convert_examples_to_features(examples, tokenizer, max_seq_length,
     unique_id = 1000000000
 
     features = []
-    
-    for (example_index, example) in enumerate(examples):
+    print('Converting examples into features...')
+
+    total_missed = 0
+    for (example_index, example) in enumerate(tqdm(examples)):
         query_tokens = tokenizer.tokenize(example.question_text)
 
         if len(query_tokens) > max_query_length:
@@ -215,16 +219,6 @@ def convert_examples_to_features(examples, tokenizer, max_seq_length,
                 logger.info("example_index: %s" % (example_index))
                 logger.info("doc_span_index: %s" % (doc_span_index))
                 logger.info("tokens: %s" % " ".join(tokens))
-                logger.info("token_to_orig_map: %s" % " ".join([
-                    "%d:%d" % (x, y) for (x, y) in token_to_orig_map.items()]))
-                logger.info("token_is_max_context: %s" % " ".join([
-                    "%d:%s" % (x, y) for (x, y) in token_is_max_context.items()
-                ]))
-                logger.info("input_ids: %s" % " ".join([str(x) for x in input_ids]))
-                logger.info(
-                    "input_mask: %s" % " ".join([str(x) for x in input_mask]))
-                logger.info(
-                    "segment_ids: %s" % " ".join([str(x) for x in segment_ids]))
                 if is_training and example.is_impossible:
                     logger.info("impossible example")
                 if is_training and not example.is_impossible:

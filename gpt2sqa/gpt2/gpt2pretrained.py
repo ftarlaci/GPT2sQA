@@ -4,9 +4,9 @@ import torch
 import os
 from torch import nn
 
-from gpt2_question_answering.gpt2.gpt2config import GPT2Config
-from gpt2_question_answering.file_utils import cached_path, CONFIG_NAME, WEIGHTS_NAME
-from gpt2_question_answering.gpt2.layer_norm import LayerNorm
+from gpt2sqa.gpt2.gpt2config import GPT2Config
+from gpt2sqa.file_utils import cached_path, CONFIG_NAME, WEIGHTS_NAME
+from gpt2sqa.gpt2.layer_norm import LayerNorm
 
 
 logger = logging.getLogger(__name__)
@@ -79,7 +79,6 @@ class GPT2PreTrainedModel(nn.Module):
             archive_file = os.path.join(pretrained_model_name_or_path, WEIGHTS_NAME)
             config_file = os.path.join(pretrained_model_name_or_path, CONFIG_NAME)
         # redirect to the cache, if necessary
-        print(archive_file)
         try:
             resolved_archive_file = cached_path(archive_file, cache_dir=cache_dir)
             resolved_config_file = cached_path(config_file, cache_dir=cache_dir)
