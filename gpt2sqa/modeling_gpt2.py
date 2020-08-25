@@ -70,7 +70,14 @@ class GPT2ModelForQuestionAnswering(GPT2PreTrainedModel):
         self.qa_outputs = nn.Linear(config.n_embd, 2)
         self.apply(self.init_weights)
 
-    def forward(self, input_ids, token_type_ids=None, attention_mask=None, start_positions=None, end_positions=None):
+    def forward(
+        self,
+        input_ids,
+        token_type_ids=None,
+        attention_mask=None,
+        start_positions=None,
+        end_positions=None,
+    ):
         sequence_output, _ = self.gpt2(input_ids, None, token_type_ids)
         logits = self.qa_outputs(sequence_output)
         start_logits, end_logits = logits.split(1, dim=2)

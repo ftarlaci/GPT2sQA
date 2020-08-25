@@ -32,8 +32,10 @@ class GPT2Config(object):
             initializer_range: The sttdev of the truncated_normal_initializer for
                 initializing all weight matrices.
         """
-        if isinstance(vocab_size_or_config_json_file, str) or (sys.version_info[0] == 2
-                                                               and isinstance(vocab_size_or_config_json_file, unicode)):
+        if isinstance(vocab_size_or_config_json_file, str) or (
+            sys.version_info[0] == 2
+            and isinstance(vocab_size_or_config_json_file, unicode)
+        ):
             with open(vocab_size_or_config_json_file, "r", encoding="utf-8") as reader:
                 json_config = json.loads(reader.read())
             for key, value in json_config.items():
@@ -82,5 +84,5 @@ class GPT2Config(object):
 
     def to_json_file(self, json_file_path):
         """ Save this instance to a json file."""
-        with open(json_file_path, "w", encoding='utf-8') as writer:
+        with open(json_file_path, "w", encoding="utf-8") as writer:
             writer.write(self.to_json_string())
