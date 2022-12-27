@@ -4,9 +4,9 @@ import torch
 import os
 from torch import nn
 
-from gpt2_question_answering.gpt2.gpt2config import GPT2Config
-from gpt2_question_answering.file_utils import cached_path, CONFIG_NAME, WEIGHTS_NAME
-from gpt2_question_answering.gpt2.layer_norm import LayerNorm
+from gpt2sqa.gpt2.gpt2config import GPT2Config
+from gpt2sqa.file_utils import cached_path, CONFIG_NAME, WEIGHTS_NAME
+from gpt2sqa.gpt2.layer_norm import LayerNorm
 
 
 logger = logging.getLogger(__name__)

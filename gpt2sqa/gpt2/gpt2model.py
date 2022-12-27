@@ -4,10 +4,10 @@ import torch
 import torch.nn as nn
 from torch.nn import CrossEntropyLoss
 
-from gpt2_question_answering.gpt2.layer_norm import LayerNorm
-from gpt2_question_answering.gpt2.modules import *
-from gpt2_question_answering.gpt2.gpt2lmhead import GPT2LMHead
-from gpt2_question_answering.gpt2.gpt2pretrained import GPT2PreTrainedModel
+from gpt2sqa.gpt2.layer_norm import LayerNorm
+from gpt2sqa.gpt2.modules import *
+from gpt2sqa.gpt2.gpt2lmhead import GPT2LMHead
+from gpt2sqa.gpt2.gpt2pretrained import GPT2PreTrainedModel
 
 
 class GPT2Model(GPT2PreTrainedModel):
